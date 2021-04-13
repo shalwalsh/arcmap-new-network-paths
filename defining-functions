@@ -1,0 +1,23 @@
+"""-----------------------------------------------------------------------------
+  Script Name: ArcMap New Network Paths
+  Description: Defines various functions to aid in network analyses when adding paths
+  Created By:  Shalee Walsh
+  Date:        April 12 2021
+-----------------------------------------------------------------------------"""
+
+import arcpy
+
+def merge_integrated_shapefiles( shapefiles_list, output_name ):
+    #Ensures a well-joined shapefile from which a network dataset can be built
+    
+    #Integrates shapefiles: Connects shapefiles and inserts vertices where features intersect
+    arcpy.Integrate_management( shapefiles_list )
+    
+    #Creates a new shapefile of the combined features, with a specified name
+    arcpy.Merge_management( shapefile_list, output_name )
+    
+def service_area( network dataset, facilities_shapefile, output_name, facilities_distance=40 ):
+    
+    
+    
+    
