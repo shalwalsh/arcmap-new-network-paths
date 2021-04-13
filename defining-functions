@@ -7,8 +7,12 @@
 
 import arcpy
 
-def merge_integrated_shapefiles( shapefiles_list, output_name ):
+def merge_integrated_shapefiles( shapefiles_list, output_name, projected_coord ):
     #Ensures a well-joined shapefile from which a network dataset can be built
+    
+    #Ensure that all shapefiles have the same projected coordinate system
+    for file in shapefile_list:
+        arcpy.DefineProjection_management(file, projected_coord)
     
     #Integrates shapefiles: Connects shapefiles and inserts vertices where features intersect
     arcpy.Integrate_management( shapefiles_list )
@@ -17,6 +21,7 @@ def merge_integrated_shapefiles( shapefiles_list, output_name ):
     arcpy.Merge_management( shapefile_list, output_name )
     
 def service_area( network dataset, facilities_shapefile, output_name, facilities_distance=40 ):
+    
     
     
     
