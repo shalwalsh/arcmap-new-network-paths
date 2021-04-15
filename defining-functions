@@ -7,8 +7,7 @@
 
 import arcpy
 
-def unite_shapefiles( shapefiles_list, output_name, projected_coord ):
-    #Ensures a well-joined shapefile from which a network dataset can be built
+def unite_shapefiles( shapefiles_list, output_name ):
     
     #Ensure that all shapefiles have the same projected coordinate system
     for file in shapefile_list:
